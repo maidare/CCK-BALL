@@ -85,11 +85,11 @@
 
         F_layers {
             bindings = <
-&kp F12           &kp F1  &kp F2         &kp F3     &kp F4     &kp F5         &kp F6     &kp F7     &kp F8  &kp F9  &kp F10           &kp F11
-&kp A             &none   &none          &none      &none      &kp LS(LG(S))  &none      &none      &none   &trans  &kp MINUS         &kp EQUAL
-&trans            &none   &none          &none      &mkp RCLK  &mkp LCLK      &mkp LCLK  &mkp RCLK  &trans  &trans  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-&trans            &trans  &trans         &trans     &trans     &none          &none      &none      &trans  &trans  &none             &kp GRAVE
-&kp LEFT_CONTROL  &trans  &kp RIGHT_ALT  &kp ENTER  &kp SPACE  &kp DEL        &none      &none      &trans  &trans  &trans            &trans
+&kp F12           &kp F1            &kp F2             &kp F3     &kp F4     &kp F5         &kp F6     &kp F7     &kp F8  &kp F9  &kp F10           &kp F11
+&kp A             &kp MINUS         &kp EQUAL          &kp GRAVE  &none      &kp LS(LG(S))  &none      &none      &none   &trans  &kp MINUS         &kp EQUAL
+&trans            &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp TILDE  &mkp RCLK  &mkp LCLK      &mkp LCLK  &mkp RCLK  &trans  &trans  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&kp LSHIFT        &trans            &trans             &trans     &trans     &none          &none      &none      &trans  &trans  &none             &kp GRAVE
+&kp LEFT_CONTROL  &trans            &kp RIGHT_ALT      &kp ENTER  &kp SPACE  &kp DEL        &none      &none      &trans  &trans  &trans            &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -97,11 +97,11 @@
 
         F2_layers {
             bindings = <
-&trans  &none          &none             &none   &none   &none   &trans  &trans  &trans  &trans  &trans  &kp W
-&trans  &kp C_AC_BACK  &kp C_AC_FORWARD  &trans  &none   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &none          &trans            &none   &none   &none   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans         &trans            &none   &trans  &trans  &none   &trans  &trans  &trans  &trans  &trans
-&trans  &trans         &trans            &none   &none   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &none          &none             &none   &none   &none   &trans       &trans         &trans  &trans  &trans  &kp W
+&trans  &kp C_AC_BACK  &kp C_AC_FORWARD  &trans  &none   &trans  &trans       &trans         &trans  &trans  &trans  &trans
+&trans  &none          &trans            &none   &none   &none   &kp PAGE_UP  &kp PAGE_DOWN  &trans  &trans  &trans  &trans
+&trans  &trans         &trans            &none   &trans  &trans  &kp HOME     &kp END        &trans  &trans  &trans  &trans
+&trans  &trans         &trans            &none   &none   &trans  &trans       &trans         &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -130,7 +130,7 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,
+                // 编码器1：上下滚动,,,
                 <&scroll_horizontal_encoder>;
 
             // 编码器2：左右滚动
