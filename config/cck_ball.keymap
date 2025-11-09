@@ -97,7 +97,7 @@
 
         F2_layers {
             bindings = <
-&bootloader  &none          &none             &none   &none   &none   &trans       &trans         &trans  &trans  &trans  &kp W
+&bootloader  &none          &none             &none   &none   &none   &trans       &trans         &trans  &trans  &trans  &bootloader
 &trans       &kp C_AC_BACK  &kp C_AC_FORWARD  &trans  &none   &trans  &trans       &trans         &trans  &trans  &trans  &trans
 &trans       &none          &trans            &none   &none   &none   &kp PAGE_UP  &kp PAGE_DOWN  &trans  &trans  &trans  &trans
 &trans       &trans         &trans            &none   &trans  &trans  &kp HOME     &kp END        &trans  &trans  &trans  &trans
@@ -130,7 +130,7 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,,,,
+                // 编码器1：上下滚动,,,,,
                 <&scroll_horizontal_encoder>;
 
             // 编码器2：左右滚动
