@@ -4,7 +4,6 @@
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
@@ -50,16 +49,35 @@
     behaviors {
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <37 38>;
+        };
+
+        cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <38 39>;
+        };
+
+        paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <39 40>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         QWERTY {
             bindings = <
-&kp ESC           &kp N1        &kp N2        &kp N3      &kp N4     &kp N5  &kp N6  &kp N7     &kp N8     &kp N9          &kp N0          &kp BACKSPACE
-&kp TAB           &kp Q         &kp W         &kp E       &kp R      &kp T   &kp Y   &kp U      &kp I      &kp O           &kp P           &kp BSLH
-&kp CAPSLOCK      &kp A         &lt 4 S       &kp D       &lt 3 F    &kp G   &kp H   &kp J      &kp K      &kp L           &kp SEMI        &kp SQT
-&kp LEFT_SHIFT    &kp Z         &kp X         &kp C       &kp V      &kp B   &kp N   &kp M      &kp COMMA  &kp DOT         &kp UP_ARROW    &kp FSLH
-&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp DELETE  &kp SPACE  &mo 1   &mo 2   &kp SPACE  &kp ENTER  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&kp ESC            &kp N1        &kp N2        &kp N3     &kp N4     &kp N5         &kp N6  &kp N7  &kp N8     &kp N9          &kp N0          &kp BACKSPACE
+&kp TAB            &kp Q         &kp W         &kp E      &kp R      &kp T          &kp Y   &kp U   &kp I      &kp O           &kp P           &kp BSLH
+&kp CAPSLOCK       &kp A         &kp S         &kp D      &kp F      &kp G          &kp H   &kp J   &kp K      &kp L           &kp SEMI        &kp SQT
+&kp LEFT_SHIFT     &kp Z         &kp X         &kp C      &kp V      &kp B          &kp N   &kp M   &kp COMMA  &kp DOT         &kp UP_ARROW    &kp FSLH
+&kp RIGHT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp ENTER  &kp SPACE  &kp BACKSPACE  &mo 2   &mo 1   &kp SPACE  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -67,23 +85,23 @@
 
         F_layers {
             bindings = <
-&kp F12   &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6     &kp F7     &kp F8  &kp F9  &kp F10  &kp F11
-&kp A     &none   &none   &none   &none   &trans  &none      &none      &none   &trans  &trans   &trans
-&trans    &none   &none   &none   &none   &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans   &trans
-&trans    &trans  &trans  &trans  &trans  &none   &none      &none      &trans  &trans  &none    &trans
-&kp RALT  &trans  &trans  &trans  &trans  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans   &trans
+&kp F12           &kp F1  &kp F2         &kp F3     &kp F4     &kp F5         &kp F6     &kp F7     &kp F8  &kp F9  &kp F10           &kp F11
+&kp A             &none   &none          &none      &none      &kp LS(LG(S))  &none      &none      &none   &trans  &kp MINUS         &kp EQUAL
+&trans            &none   &none          &none      &mkp RCLK  &mkp LCLK      &mkp LCLK  &mkp RCLK  &trans  &trans  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&trans            &trans  &trans         &trans     &trans     &none          &none      &none      &trans  &trans  &none             &kp GRAVE
+&kp LEFT_CONTROL  &trans  &kp RIGHT_ALT  &kp ENTER  &kp SPACE  &kp DEL        &none      &none      &trans  &trans  &trans            &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        BT_layers {
+        F2_layers {
             bindings = <
-&trans  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans      &trans  &trans  &trans  &trans  &kp W
-&trans  &trans          &trans        &trans        &trans        &trans        &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans        &bt BT_CLR    &trans        &trans        &bt BT_NXT  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans        &trans        &trans        &trans        &trans      &trans  &trans  &trans  &trans  &trans
+&trans  &none          &none             &none   &none   &none   &trans  &trans  &trans  &trans  &trans  &kp W
+&trans  &kp C_AC_BACK  &kp C_AC_FORWARD  &trans  &none   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &none          &trans            &none   &none   &none   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &trans            &none   &trans  &trans  &none   &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &trans            &none   &none   &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -112,9 +130,10 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // 编码器1：上下滚动,
+                // 编码器1：上下滚动,,
                 <&scroll_horizontal_encoder>;
-  // 编码器2：左右滚动
+
+            // 编码器2：左右滚动
         };
     };
 };
